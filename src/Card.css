@@ -1,0 +1,27 @@
+.book-card {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 14px;
+    max-width: 230px;
+    background-color: antiquewhite;
+    padding: 20px;
+    border-radius: 20px;
+}
+.book-card__img {
+    text-align: center;
+    padding: 10px;
+    height: 200px;
+    overflow: hidden;
+}
+.book-card__img img {
+    height: 100%;
+}
+.book-card__title {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 1rem;
+    font-weight: 700;
+}
