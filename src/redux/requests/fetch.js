@@ -6,11 +6,10 @@ const API_KEY = process.env.REACT_APP_BOOKS_API;
 
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async (url) => {
     if (!url) return
-    console.log(url)
+    console.log(url);
     return axios
     .get(`${url}&key=${API_KEY}`)
     .then(response => {
-        console.log(response.data.items);
         return response.data
     });
   })

@@ -21,7 +21,7 @@ function BookPage() {
   }, [dispatch,bookId])
 
   useEffect(() => {
-    console.log('book changed')
+    
     setTitle(book?.item?.volumeInfo?.title);
     setCat(book?.item?.volumeInfo?.categories?.join('/'));
     setAuthors(book?.item?.volumeInfo?.authors?.join(','));
@@ -35,7 +35,6 @@ function BookPage() {
     setImg('');
     navigate(-1);
   }
-  console.log('book', book)
   return (
     <div>
         <button onClick={()=>handleBack()}> Back </button>
