@@ -10,7 +10,7 @@ function CardList() {
 
   console.log(books);
   return (
-    <>
+    <div className='container'>
     {!books.loading && books.items.length>0 && 'Total books:' + books.totalItems}
     <div className='books-container'>
       
@@ -18,7 +18,7 @@ function CardList() {
       {books.loading && <div> loading... </div>}
      
     </div>
-    </>
+    </div>
   )
 }
 

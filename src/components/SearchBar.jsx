@@ -1,8 +1,8 @@
 import React, { useEffect, useRef} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchBooks } from './redux/requests/fetch';
-import { addPage, newSearch } from './redux/books';
-import { API_URL_DEFAULT_BOOKS } from './api/api';
+import { fetchBooks } from '../redux/requests/fetch';
+import { addPage, newSearch } from '../redux/books';
+import { API_URL_DEFAULT_BOOKS } from '../api/api';
 import './SearchBar.css';
 
 function SearchBar({children }) {
@@ -39,7 +39,7 @@ function SearchBar({children }) {
     }
 
     function handleMore(e) {
-      dispatch(addPage())
+      dispatch(addPage());
       urlBuilderHandler();
     }
 
@@ -52,7 +52,8 @@ function SearchBar({children }) {
       urlBuilderHandler();
     },[startIndex])
 
-
+    
+    console.log('render searchbar');
     return (
     
     <div className='search-bar'>

@@ -1,6 +1,9 @@
 import './Card.css'
 import { Link } from 'react-router-dom';
-function Card({book}) {
+
+
+
+function Card({book}:any) {
 
   
   const title = book.volumeInfo.title || '';
@@ -9,23 +12,26 @@ function Card({book}) {
   const imgUrl = book?.volumeInfo?.imageLinks?.thumbnail || '';
 
   return (
-    <Link to={'/book/'+book?.id} >
+    
     <div className="book-card">
-      <div className="book-card__img">
-        
-        <img src={imgUrl} alt='book cover' />
-      </div>
+      <Link to={'/book/'+book?.id} >
+        <div className="book-card__img">
+          <img src={imgUrl} alt='book cover' />
+        </div>
+      </Link>
       <div className="book-card__categorie">
-      {categorie}
+      {categorie || <p></p>}
       </div>
-      <div className="book-card__title">
-      {title}
-      </div>
+      <Link to={'/book/'+book?.id} >
+        <div className="book-card__title">
+        {title || <p></p>}
+        </div>
+      </Link>
       <div className="book-card__authors">
-      {authors}
+      {authors || <p></p>}
       </div>
      
-    </div></Link>
+    </div>
   )
 }
 

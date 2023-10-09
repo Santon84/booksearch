@@ -4,8 +4,8 @@ import { getBookById } from './requests/fetch'
 
 
 const initialState = {
-    item: {title: 'hello world'},
-    loading: false,
+    item: {},
+    loading: true,
     error: '',
 }
 

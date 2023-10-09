@@ -5,7 +5,7 @@ import { fetchBooks } from './requests/fetch'
 
 const initialState = {
     items: [],
-    loading: false,
+    loading: true,
     error: '',
     itemsPerPage: 30,
     startIndex: 0,
