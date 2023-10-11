@@ -34,19 +34,20 @@ const booksSlice = createSlice({
 
     builder.addCase(getBooks.fulfilled, (state, action) => {
       
+      console.log('reducer 2', action.payload);
       state.loading = false;
       if (action.payload === undefined) return state;
-      
-      state.items = state.append ? [...state.items, ...action.payload.items] : action.payload.items;
+      // console.log('action', action.payload);
+      state.items = state.append ? [...state.items, ...action.payload.data.items] : action.payload.data.items;
       state.error = '';
     
-      state.totalItems = action.payload.totalItems || 0;
+      state.totalItems = action.payload.data.totalItems || 0;
       
      })
 
      builder.addCase(getBooks.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message;
+      state.error = action.payload.data.error;
       
      })
      

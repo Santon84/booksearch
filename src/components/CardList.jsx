@@ -13,7 +13,7 @@ function CardList() {
     {!books.loading && books.items.length>0 && 'Total books:' + books.totalItems}
     <div className='books-container'>
       
-      {books.items.map(book => <Card book={book}></Card>)}
+      {books.items.map(book => <Card key={book.id} book={book}></Card>)}
       {books.loading && <div> loading... </div>}
      
     </div>

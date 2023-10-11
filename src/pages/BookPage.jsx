@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import {  useSelector , useDispatch } from 'react-redux'
-import { getBookById } from '../redux/requests/fetch';
+import { getBookById } from '../redux/requests/booksAPI';
+
 import { API_URL_DEFAULT_BOOKS } from '../redux/api/api';
 import { useParams, useNavigate   } from 'react-router-dom';
 import './BookPage.css'

@@ -1,10 +1,11 @@
 import React, { useEffect, useRef} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchBooks } from '../redux/requests/fetch';
+// import { fetchBooks } from '../redux/requests/fetch';
 import { addPage, newSearch } from '../redux/books';
 import { API_URL_DEFAULT_BOOKS } from '../redux/api/api';
 import './SearchBar.css';
 import { genres } from '../constants/constants';
+import { getBooks } from '../redux/requests/booksAPI';
 
 
 function SearchBar({children }) {
@@ -47,7 +48,9 @@ function SearchBar({children }) {
     }
 
     useEffect(() => {
-      dispatch(fetchBooks(searchUrl));
+      if (!searchUrl) return;
+      console.log('effect called 0')
+      dispatch(getBooks(searchUrl));
     }, [searchUrl, dispatch])
 
     
@@ -73,7 +76,7 @@ function SearchBar({children }) {
         <div className='search-bar__filters'>
           <label htmlFor="genres"> Категории </label>
           <select id='genres' ref={categorieRef} onChange={() => searchBooks()}>
-            {genres.map(item => <option value={item}>{item}</option>)  }     
+            {genres.map(item => <option key={item} value={item}>{item}</option>)  }     
           </select>
           <label htmlFor="sortBy"> Сортировка </label>
           <select id='sortBy' name='sort' ref={sortRef} onChange={() => searchBooks()}>
@@ -84,7 +87,7 @@ function SearchBar({children }) {
       </div>
       {children}
       <div className='search-bar__bottom'>
-        {books.items.length>0 && <input type="button" onClick={(e) => handleMore(e)} value="Еще" />}
+        {/* {books?.items?.length>0 && <input type="button" onClick={(e) => handleMore(e)} value="Еще" />} */}
       </div>
     </div>
   )

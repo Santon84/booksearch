@@ -23,8 +23,8 @@ const bookPageSlice = createSlice({
           
           state.loading = false;
           if (action.payload === undefined) return state;
-          
-          state.item = action.payload;
+          console.log('page action', action.payload);
+          state.item = action.payload.data  ;
           state.error = '';
           
         })
