@@ -49,11 +49,14 @@ function SearchBar({children }) {
     useEffect(() => {
       dispatch(fetchBooks(searchUrl));
     }, [searchUrl, dispatch])
+
     
     useEffect(() => {
       // if (!searchKey) return;
       urlBuilderHandler();
-    },[startIndex])
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[startIndex])     
+
 
     
     console.log('render searchbar');
