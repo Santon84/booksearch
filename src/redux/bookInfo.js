@@ -1,6 +1,6 @@
 
 import { createSlice } from '@reduxjs/toolkit'
-import { getBookById } from './requests/fetch'
+import { getBookById } from './requests/booksAPI'
 
 
 const initialState = {

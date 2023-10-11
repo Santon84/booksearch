@@ -5,7 +5,7 @@ import booksSlice from './books'
 import bookPageSlice from './bookInfo';
 
 const rootReducer = combineReducers({
-    booksReducer: booksSlice,
+    books: booksSlice,
     bookPage: bookPageSlice, 
 }
 )

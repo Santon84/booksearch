@@ -17,7 +17,7 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async (url) => {
   export const getBookById = createAsyncThunk('bookInfo/getBookById', async (url) => {
     if (!url) return
     return axios
-    .get(`${url}`) //&key=${API_KEY}
+    .get(`${url}`)
     .then(response => {
         return response.data
     });

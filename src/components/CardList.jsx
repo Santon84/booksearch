@@ -1,4 +1,3 @@
-import React from 'react'
 import {  useSelector } from 'react-redux'
 import Card from './Card';
 import './CardList.css'
@@ -6,7 +5,7 @@ import './CardList.css'
 
 
 function CardList() {
-  const books = useSelector(state => state.booksReducer);
+  const books = useSelector(state => state.books);
 
   console.log(books);
   return (

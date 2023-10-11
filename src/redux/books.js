@@ -1,7 +1,13 @@
 
 import { createSlice, createAction } from '@reduxjs/toolkit'
-import { fetchBooks } from './requests/fetch'
+import { getBooks } from './requests/booksAPI'
 
+
+
+// type BooksItems = {
+
+
+// }
 
 const initialState = {
     items: [],
@@ -20,13 +26,13 @@ const booksSlice = createSlice({
     name: 'books',
     initialState,
     extraReducers: (builder) => {
-    builder.addCase(fetchBooks.pending, (state) => {
+    builder.addCase(getBooks.pending, (state) => {
       
       state.loading = true;
       
       }) 
 
-     builder.addCase(fetchBooks.fulfilled, (state, action) => {
+    builder.addCase(getBooks.fulfilled, (state, action) => {
       
       state.loading = false;
       if (action.payload === undefined) return state;
@@ -38,7 +44,7 @@ const booksSlice = createSlice({
       
      })
 
-     builder.addCase(fetchBooks.rejected, (state, action) => {
+     builder.addCase(getBooks.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error.message;
       

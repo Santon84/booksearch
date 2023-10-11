@@ -2,11 +2,13 @@ import React, { useEffect, useRef} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchBooks } from '../redux/requests/fetch';
 import { addPage, newSearch } from '../redux/books';
-import { API_URL_DEFAULT_BOOKS } from '../api/api';
+import { API_URL_DEFAULT_BOOKS } from '../redux/api/api';
 import './SearchBar.css';
+import { genres } from '../constants/constants';
+
 
 function SearchBar({children }) {
-    const books = useSelector(state => state.booksReducer);
+    const books = useSelector(state => state.books);
     const dispatch = useDispatch();
 
     const [searchKey, setSearchKey] = React.useState('');
@@ -21,6 +23,7 @@ function SearchBar({children }) {
     
   
     function searchBooks ()  {
+      if (!searchKey) return;
             dispatch(newSearch());
             urlBuilderHandler();            
     }
@@ -48,7 +51,7 @@ function SearchBar({children }) {
     }, [searchUrl, dispatch])
     
     useEffect(() => {
-      if (!searchKey) return;
+      // if (!searchKey) return;
       urlBuilderHandler();
     },[startIndex])
 
@@ -67,13 +70,7 @@ function SearchBar({children }) {
         <div className='search-bar__filters'>
           <label htmlFor="genres"> Категории </label>
           <select id='genres' ref={categorieRef} onChange={() => searchBooks()}>
-            <option value="all">all</option>
-            <option value="art">art</option>
-            <option value="biography">biography</option>
-            <option value="computers">computers</option>
-            <option value="history">history</option>
-            <option value="medical">medical</option>
-            <option value="poetry">poetry</option>
+            {genres.map(item => <option value={item}>{item}</option>)  }     
           </select>
           <label htmlFor="sortBy"> Сортировка </label>
           <select id='sortBy' name='sort' ref={sortRef} onChange={() => searchBooks()}>
