@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 function Card({book}:any) {
 
   
-  const title = book.volumeInfo.title || '';
-  const categorie = (book?.volumeInfo?.categories || [])[0];
-  const authors = book?.volumeInfo?.authors?.join(',') || '';
-  const imgUrl = book?.volumeInfo?.imageLinks?.thumbnail || '';
+  const title = book.title || '';
+  const categorie = (book.categories)[0];
+  const authors = book.authors.join(',');
+  const imgUrl = book.image;
 
   return (
     

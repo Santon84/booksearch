@@ -1,17 +1,11 @@
 
 import { createSlice, createAction } from '@reduxjs/toolkit'
-import { getBooks } from './requests/booksAPI'
+import { getBooks } from './api/booksAPI'
 
-
-
-// type BooksItems = {
-
-
-// }
 
 const initialState = {
     items: [],
-    loading: true,
+    loading: false,
     error: '',
     itemsPerPage: 30,
     startIndex: 0,
@@ -34,13 +28,16 @@ const booksSlice = createSlice({
 
     builder.addCase(getBooks.fulfilled, (state, action) => {
       
-      console.log('reducer 2', action.payload);
       state.loading = false;
       if (action.payload === undefined) return state;
-      // console.log('action', action.payload);
-      state.items = state.append ? [...state.items, ...action.payload.data.items] : action.payload.data.items;
+
+      if (state.append) {
+        state.items = [...state.items, ...action.payload.data.items];
+        state.append = false;
+      } else {
+        state.items = action.payload.data.items;
+      }
       state.error = '';
-    
       state.totalItems = action.payload.data.totalItems || 0;
       
      })
@@ -53,7 +50,7 @@ const booksSlice = createSlice({
      
      builder.addCase(addPage, (state) => {
       
-      state.startIndex = state.startIndex + state.itemsPerPage;
+      state.startIndex = state.startIndex + state.itemsPerPage + 1;
       state.append = true;
       
       }) 

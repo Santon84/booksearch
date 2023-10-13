@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import {  useSelector , useDispatch } from 'react-redux'
-import { getBookById } from '../redux/requests/booksAPI';
+import { getBookById } from '../redux/api/booksAPI';
 
-import { API_URL_DEFAULT_BOOKS } from '../redux/api/api';
+import { API_URL_DEFAULT_BOOKS } from '../constants/constants';
 import { useParams, useNavigate   } from 'react-router-dom';
 import './BookPage.css'
 
@@ -27,7 +27,7 @@ function BookPage() {
   if (loading) {
     return 'Loading...'
   }
-  console.log('page', book);
+
   const { title = '', categories = [], authors = [], description = '', imageLinks} = item?.volumeInfo;
   
   return (

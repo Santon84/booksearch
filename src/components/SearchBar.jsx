@@ -1,11 +1,10 @@
 import React, { useEffect, useRef} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// import { fetchBooks } from '../redux/requests/fetch';
-import { addPage, newSearch } from '../redux/books';
-import { API_URL_DEFAULT_BOOKS } from '../redux/api/api';
+import { addPage } from '../redux/books';
+import { API_URL_DEFAULT_BOOKS } from '../constants/constants';
 import './SearchBar.css';
 import { genres } from '../constants/constants';
-import { getBooks } from '../redux/requests/booksAPI';
+import { getBooks } from '../redux/api/booksAPI';
 
 
 function SearchBar({children }) {
@@ -25,7 +24,6 @@ function SearchBar({children }) {
   
     function searchBooks ()  {
       if (!searchKey) return;
-            dispatch(newSearch());
             urlBuilderHandler();            
     }
 
@@ -49,20 +47,18 @@ function SearchBar({children }) {
 
     useEffect(() => {
       if (!searchUrl) return;
-      console.log('effect called 0')
       dispatch(getBooks(searchUrl));
     }, [searchUrl, dispatch])
 
     
     useEffect(() => {
-      // if (!searchKey) return;
+     if (!searchKey) return;
       urlBuilderHandler();
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[startIndex])     
 
 
     
-    console.log('render searchbar');
     return (
     
     <div className='search-bar'>
@@ -87,7 +83,7 @@ function SearchBar({children }) {
       </div>
       {children}
       <div className='search-bar__bottom'>
-        {/* {books?.items?.length>0 && <input type="button" onClick={(e) => handleMore(e)} value="Еще" />} */}
+        {books?.items?.length>0 && <input type="button" onClick={(e) => handleMore(e)} value="Еще" />}
       </div>
     </div>
   )

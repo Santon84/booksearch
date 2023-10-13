@@ -1,6 +1,6 @@
 
 import { createSlice } from '@reduxjs/toolkit'
-import { getBookById } from './requests/booksAPI'
+import { getBookById } from './api/booksAPI'
 
 
 const initialState = {
@@ -23,7 +23,6 @@ const bookPageSlice = createSlice({
           
           state.loading = false;
           if (action.payload === undefined) return state;
-          console.log('page action', action.payload);
           state.item = action.payload.data  ;
           state.error = '';
           
